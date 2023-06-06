@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description"
+        content="Discover top-quality printing equipment at affordable prices with Vision. Our company specializes in the distribution of used copiers, used printers, high-quality ink, and paper throughout Egypt. Trust our team to meet your printing needs with precision and reliability. Explore our inventory online today for a seamless shopping experience.">
+    <meta property="og:title" content="Vision - High-Quality Used Copiers, Printers, Ink, and Paper in Egypt">
+    <meta property="og:description"
+        content="Find affordable and high-quality printing equipment from Vision. We distribute used copiers, printers, ink, and paper throughout Egypt. Browse our inventory online today!">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@200;300;400&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <style>
+        :root {
+            --color-primary: #343434;
+            --color-secondary: #FFFFFF;
+            --color-accent: #007ba7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+            font-family: 'Geologica', sans-serif;
+        }
+
+        @media (max-width: 500px) {
+            html {
+                font-size: 45%;
+            }
+        }
+    </style>
+    %sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+</body>
+
+</html>

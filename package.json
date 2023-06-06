@@ -1,0 +1,30 @@
+{
+	"name": "vision",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/kit": "^1.5.0",
+		"@types/grecaptcha": "^3.0.4",
+		"@types/gtag.js": "^0.0.12",
+		"svelte": "^3.54.0",
+		"svelte-check": "^3.0.1",
+		"svelte-preprocess-import-assets": "^1.0.0",
+		"typescript": "^5.0.0",
+		"vite": "^4.3.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"google-libphonenumber": "^3.2.32",
+		"nodemailer": "^6.9.3",
+		"svelte-hcaptcha": "^0.1.1",
+		"svelte-use-form": "^2.6.2"
+	}
+}
