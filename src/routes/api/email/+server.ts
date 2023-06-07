@@ -8,12 +8,11 @@ const captcha_api = 'hcaptcha.com/siteverify';
 async function sendMail(message: string, name: string, email: string, phone: string) {
     const transporter = createTransport({
         host: SMTP_HOST,
-        port: 465,
-        secure: true, // true for 465, false for other ports
         auth: {
             user: SMTP_USER,
             pass: SMTP_PASS,
         },
+        secureConnection: false
     });
 
     const mailData = {
