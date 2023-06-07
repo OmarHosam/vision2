@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/lib/assets/logo.png" alt="Vision logo">
+  <img src="src/lib/assets/logo.png" width="200" alt="Vision logo">
 </p>
 
 <h1 align="center">Vision Website</h1>

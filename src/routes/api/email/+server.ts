@@ -57,7 +57,7 @@ export async function POST(event: { request: { json: () => any; }; }) {
                     console.log("did captcha")
                     // now we finally send an email to our domain email
                     sendMail(data.message, data.name, data.email, data.number);
-                    return json({ success: true });
+                    return json({ success: true, didEverythingRight: true });
                 } else {
                     console.log("didnt do captcha in")
                     return json({ success: false, error: "ERR_CAPTCHA" })
