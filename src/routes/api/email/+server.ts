@@ -50,22 +50,28 @@ export async function POST(event: { request: { json: () => any; }; }) {
     try {
         const number = pnu.parseAndKeepRawInput(data.number, '');
         if (pnu.isValidNumber(number)) {
+            console.log("Valid number")
             if (data.didCaptcha === true) {
                 const verification = await verify(data.token, HCATPCHA_SECRET_KEY);
                 if (verification.success) {
+                    console.log("did captcha")
                     // now we finally send an email to our domain email
                     sendMail(data.message, data.name, data.email, data.number);
                     return json({ success: true });
                 } else {
+                    console.log("didnt do captcha in")
                     return json({ success: false, error: "ERR_CAPTCHA" })
                 }
             } else {
+                console.log("didnt do captcha out")
                 return json({ success: false, error: "ERR_CAPTCHA" })
             }
         } else {
+            console.log("invalid number in")
             return json({ success: false, error: "ERR_NUMBER" })
         }
     } catch (err) {
+        console.log("invalid number out")
         return json({ success: false, error: "ERR_NUMBER" })
     }
 
