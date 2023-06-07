@@ -6,11 +6,13 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"host": "vite --host",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/adapter-node": "^1.2.4",
 		"@sveltejs/kit": "^1.5.0",
 		"@types/grecaptcha": "^3.0.4",
 		"@types/gtag.js": "^0.0.12",
@@ -22,6 +24,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-cloudflare": "^2.3.0",
+		"@sveltejs/adapter-static": "^2.0.2",
 		"google-libphonenumber": "^3.2.32",
 		"nodemailer": "^6.9.3",
 		"svelte-hcaptcha": "^0.1.1",

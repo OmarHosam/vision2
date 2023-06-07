@@ -1,8 +1,10 @@
-<!-- ContactForm.svelte -->
+<script>
+    //type checking is annoying asf, good ol' Javascript will be number 1 for me
+// @ts-nocheck
 
-<script lang="ts">
     import { onDestroy, onMount } from "svelte";
     import { browser } from "$app/environment";
+    import { PUBLIC_HCAPTCHA_SITE_KEY } from "$env/static/public";
 
     import {
         validators,
@@ -15,7 +17,6 @@
     import { goto } from "$app/navigation";
 
     var form = useForm();
-    var HCAPTCHA_SITE_KEY = "30000000-ffff-ffff-ffff-000000000003";
 
     let state = {
         email: "",
@@ -65,6 +66,9 @@
         }
     }
 
+    /**
+     * @param {string} token
+     */
     function onSubmitCaptcha(token) {
         state.token = token;
         state.didCaptcha = true;
@@ -90,7 +94,7 @@
             hcaptcha = window.hcaptcha;
             if (hcaptcha.render) {
                 hcaptcha.render("hcaptcha", {
-                    sitekey: HCAPTCHA_SITE_KEY,
+                    sitekey: PUBLIC_HCAPTCHA_SITE_KEY,
                     size: "normal",
                 });
             }
@@ -158,7 +162,7 @@
     <div
         id="hcaptcha"
         class="h-captcha"
-        data-sitekey={HCAPTCHA_SITE_KEY}
+        data-sitekey={PUBLIC_HCAPTCHA_SITE_KEY}
         data-size="normal"
         data-callback="onSubmitCaptcha"
         data-expired-callback="onCaptchaExpired"

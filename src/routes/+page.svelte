@@ -15,7 +15,7 @@
             change = !change;
         }}
         on:keydown={() => {
-            change = !change
+            change = !change;
         }}
     >
         <div class={change ? "line line-1 change" : "line line-1"} />
@@ -24,7 +24,7 @@
     </div>
     <header class="header" id="home">
         <div class="img-wrapper">
-            <img src="$lib/assets/bg.jpg" alt="Background" />
+            <img src="/images/bg.jpg" alt="Background" />
         </div>
         <div class="banner">
             <h1>Vision</h1>
@@ -42,7 +42,7 @@
                 <a
                     href="#home"
                     on:click={() => {
-                        change = !change
+                        change = !change;
                     }}
                     class="menu-link"
                     data-content="Home">Home</a
@@ -52,7 +52,7 @@
                 <a
                     href="#about-us"
                     on:click={() => {
-                        change = !change
+                        change = !change;
                     }}
                     class="menu-link"
                     data-content="About Us">About Us</a
@@ -62,7 +62,7 @@
                 <a
                     href="/products"
                     on:click={() => {
-                        change = !change
+                        change = !change;
                     }}
                     class="menu-link"
                     data-content="Products">Products</a
@@ -72,7 +72,7 @@
                 <a
                     href="#contact"
                     on:click={() => {
-                        change = !change
+                        change = !change;
                     }}
                     class="menu-link"
                     data-content="Contact">Contact</a
@@ -179,7 +179,7 @@
             </div>
             <div class="about-us-img-wrapper">
                 <img
-                    src="$lib/assets/logo.png"
+                    src="/images/logo.png"
                     alt="Vision for printing solutions"
                 />
             </div>
@@ -792,13 +792,24 @@
         }
 
         .contact {
+            min-height: 100%;
             width: 100%;
             height: 100%;
+            padding: 0;
         }
 
         .contact-wrapper {
             width: 100%;
             height: 100%;
+        }
+
+        .contact-left #haramBranch,
+        #second-label {
+            display: none;
+        }
+
+        .contact-left iframe {
+            width: 100%;
         }
 
         #first-label {
