@@ -26,13 +26,8 @@ async function sendMail(message: string, name: string, email: string, phone: str
         `,
     };
 
-    try {
-        const mail = await client.sendAsync(mailData);
-        console.log(mail);
-    } catch (error) {
-        console.error('Oops, something went wrong!', error);
-    }
-
+    const mail = await client.sendAsync(mailData);
+    console.log(mail);
 }
 
 async function verify(token: string, secret_key: string = HCATPCHA_SECRET_KEY) {
