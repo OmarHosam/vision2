@@ -6,13 +6,28 @@ import { HCATPCHA_SECRET_KEY, SMTP_HOST, SMTP_USER, SMTP_PASS } from '$env/stati
 const captcha_api = 'hcaptcha.com/siteverify';
 
 async function sendMail(message: string, name: string, email: string, phone: string) {
+    console.log(SMTP_HOST, SMTP_USER, SMTP_PASS)
     const transporter = createTransport({
         host: SMTP_HOST,
+        port: 465,
+        secure: true, // true for 465, false for other ports
         auth: {
             user: SMTP_USER,
             pass: SMTP_PASS,
-        },
-        secureConnection: false
+        }
+    });
+
+    await new Promise((resolve, reject) => {
+        // verify connection configuration
+        transporter.verify(function (error, success) {
+            if (error) {
+                console.log(error);
+                reject(error);
+            } else {
+                console.log("Server is ready to take our messages");
+                resolve(success);
+            }
+        });
     });
 
     const mailData = {
@@ -27,8 +42,19 @@ async function sendMail(message: string, name: string, email: string, phone: str
         `,
     };
 
-    const info = await transporter.sendMail(mailData);
-    console.log(info);
+    await new Promise((resolve, reject) => {
+        // send mail
+        transporter.sendMail(mailData, (err, info) => {
+            if (err) {
+                console.error(err);
+                reject(err);
+            } else {
+                console.log(info);
+                resolve(info);
+            }
+        });
+    });
+
 }
 
 async function verify(token: string, secret_key: string = HCATPCHA_SECRET_KEY) {
@@ -55,7 +81,7 @@ export async function POST(event: { request: { json: () => any; }; }) {
                 if (verification.success) {
                     console.log("did captcha")
                     // now we finally send an email to our domain email
-                    sendMail(data.message, data.name, data.email, data.number);
+                    await sendMail(data.message, data.name, data.email, data.number);
                     return json({ success: true, didEverythingRight: true });
                 } else {
                     console.log("didnt do captcha in")
