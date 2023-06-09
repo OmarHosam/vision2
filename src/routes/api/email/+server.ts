@@ -1,34 +1,18 @@
 import { json } from '@sveltejs/kit'
-import { createTransport } from 'nodemailer';
+import { SMTPClient } from 'emailjs';
 import googlelibphonenumber from 'google-libphonenumber'
 import { HCATPCHA_SECRET_KEY, SMTP_HOST, SMTP_USER, SMTP_PASS } from '$env/static/private';
 
 const captcha_api = 'hcaptcha.com/siteverify';
+const client = new SMTPClient({
+    user: SMTP_USER,
+    password: SMTP_PASS,
+    host: SMTP_HOST,
+    ssl: true,
+})
 
 async function sendMail(message: string, name: string, email: string, phone: string) {
     console.log(SMTP_HOST, SMTP_USER, SMTP_PASS)
-    const transporter = createTransport({
-        host: SMTP_HOST,
-        port: 465,
-        secure: true, // true for 465, false for other ports
-        auth: {
-            user: SMTP_USER,
-            pass: SMTP_PASS,
-        }
-    });
-
-    await new Promise((resolve, reject) => {
-        // verify connection configuration
-        transporter.verify(function (error, success) {
-            if (error) {
-                console.log(error);
-                reject(error);
-            } else {
-                console.log("Server is ready to take our messages");
-                resolve(success);
-            }
-        });
-    });
 
     const mailData = {
         from: email,
@@ -42,18 +26,12 @@ async function sendMail(message: string, name: string, email: string, phone: str
         `,
     };
 
-    await new Promise((resolve, reject) => {
-        // send mail
-        transporter.sendMail(mailData, (err, info) => {
-            if (err) {
-                console.error(err);
-                reject(err);
-            } else {
-                console.log(info);
-                resolve(info);
-            }
-        });
-    });
+    try {
+        const mail = await client.sendAsync(mailData);
+        console.log(mail);
+    } catch (error) {
+        console.error('Oops, something went wrong!', error);
+    }
 
 }
 
@@ -81,7 +59,12 @@ export async function POST(event: { request: { json: () => any; }; }) {
                 if (verification.success) {
                     console.log("did captcha")
                     // now we finally send an email to our domain email
-                    await sendMail(data.message, data.name, data.email, data.number);
+                    try {
+                        await sendMail(data.message, data.name, data.email, data.number);
+                    } catch (err) {
+                        console.log("didnt send mail")
+                        return json({ success: false, error: "ERR_MAIL" })
+                    }
                     return json({ success: true, didEverythingRight: true });
                 } else {
                     console.log("didnt do captcha in")

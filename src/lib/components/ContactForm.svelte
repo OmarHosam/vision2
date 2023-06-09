@@ -55,13 +55,18 @@
                     error = "Invalid number, maybe not international?";
                     loading = false;
                 } else if (result.error === "ERR_CAPTCHA") {
-                    error = "Something went wrong with the captcha, please refresh if you think this is an issue";
+                    error = "Something went wrong with the captcha, please refresh if you think this is an issue.";
+                    loading = false;
+                } else if (result.error === "ERR_MAIL") {
+                    error = "We can't send you the email, we're aware of the issue and we are working hard to fix it.";
                     loading = false;
                 }
             }
+            hcaptcha.reset();
+            state.didCaptcha = false;
         } else {
             error =
-                "Please do the captcha, if there is an issue with the captcha please refresh the page";
+                "Please do the captcha, if there is an issue with the captcha please refresh the page.";
             loading = false;
         }
     }
