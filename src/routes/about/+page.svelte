@@ -3,6 +3,10 @@
     import "$lib/styles/LandingSections.css";
 </script>
 
+<svelte:head>
+    <title>Vision | Understanding Our Purpose and Direction</title>
+</svelte:head>
+
 <section class="section" id="about-us">
     <div class="section-header">
         <h1 class="section-heading">About us</h1>
