@@ -28,10 +28,6 @@
 <ContactSection />
 
 <style>
-    :global(html) {
-        scroll-behavior: unset;
-    }
-
     section {
         background: var(--color-secondary);
         position: relative;
