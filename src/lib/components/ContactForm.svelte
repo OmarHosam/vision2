@@ -30,6 +30,7 @@
     let error = "";
     let message = "";
     let loading = false;
+    let size;
 
     async function handleSubmit() {
         message = "";
@@ -97,10 +98,13 @@
             window.onSubmitCaptcha = onSubmitCaptcha;
             window.onCaptchaExpired = onCaptchaExpired;
             hcaptcha = window.hcaptcha;
+            if (window.innerWidth <= 500) {
+                size = "compact"
+            }
             if (hcaptcha.render) {
                 hcaptcha.render("hcaptcha", {
                     sitekey: PUBLIC_HCAPTCHA_SITE_KEY,
-                    size: "normal",
+                    size: size,
                 });
             }
         }
@@ -168,7 +172,7 @@
         id="hcaptcha"
         class="h-captcha"
         data-sitekey={PUBLIC_HCAPTCHA_SITE_KEY}
-        data-size="normal"
+        data-size={size}
         data-callback="onSubmitCaptcha"
         data-expired-callback="onCaptchaExpired"
     />

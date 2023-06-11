@@ -1,10 +1,6 @@
-<script>
-    import logo from "$lib/assets/logo.png";
-</script>
-
 <div class="wrapper">
     <div class="container">
-        <img src={logo} alt="Vision" />
+        <img src="/images/logo.png" alt="Vision" />
         <h1>Our site is under construction</h1>
         <p>We're still developing the website, check back soon! <a href="/">Go back.</a></p>
     </div>
