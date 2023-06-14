@@ -1,4 +1,15 @@
-<a href="#top" class="scroll-btn">
+<script>
+    // @ts-ignore
+    function scrollToTop(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }
+</script>
+
+<a href="#top" on:click={scrollToTop} class="scroll-btn">
     <i class="fas fa-arrow-up" />
 </a>
 

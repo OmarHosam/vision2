@@ -15,7 +15,7 @@
                 data-ruffle-polyfilled=""
             />
             <span class="map-label" id="first-label">Head Office</span>
-            <iframe
+            <!-- <iframe
                 title="Haram Branch"
                 id="haramBranch"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d215.93211896980694!2d31.200060543209784!3d30.010628461536506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145847a13cb84c25%3A0xe4f4aab851284de8!2z2KrYqtiq!5e0!3m2!1sen!2seg!4v1660859899178!5m2!1sen!2seg"
@@ -23,7 +23,7 @@
                 style="border: 0px;"
                 data-ruffle-polyfilled=""
             />
-            <span class="map-label" id="second-label">Haram Branch</span>
+            <span class="map-label" id="second-label">Haram Branch</span> -->
         </div>
         <div class="contact-right">
             <h1 class="contact-heading">Contact</h1>
@@ -61,11 +61,12 @@
 
     .contact-left iframe {
         width: 100%;
-        height: 50%;
+        /* height: 50%; */
+        height: 100%;
     }
 
     .contact-right {
-        width: 65%;
+        width: 75%;
         height: 100%;
         background-color: #eee;
         padding: 3rem 5rem 3rem 5rem;
@@ -91,12 +92,12 @@
         right: 0;
     }
 
-    #second-label {
+    /* #second-label {
         left: 60%;
         right: 0;
         top: 49.9%;
         bottom: 0;
-    }
+    } */
 
     @media (max-width: 1500px) {
         .contact-wrapper {
@@ -128,7 +129,8 @@
         }
 
         .contact-left iframe {
-            width: 50%;
+            /* width: 50%; */
+            width: 100%;
             height: 100%;
         }
 
@@ -153,12 +155,12 @@
             top: 25%;
         }
 
-        #second-label {
+        /* #second-label {
             left: 51.5%;
             right: 0;
             bottom: 0;
             top: 25%;
-        }
+        } */
     }
 
     @media (max-width: 500px) {
@@ -174,10 +176,10 @@
             height: 100%;
         }
 
-        .contact-left #haramBranch,
+        /* .contact-left #haramBranch,
         #second-label {
             display: none;
-        }
+        } */
 
         .contact-left iframe {
             width: 100%;
@@ -188,9 +190,9 @@
             top: 20%;
         }
 
-        #second-label {
+        /* #second-label {
             bottom: 0;
             top: 20%;
-        }
+        } */
     }
 </style>

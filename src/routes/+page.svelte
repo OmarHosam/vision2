@@ -1,12 +1,22 @@
 <script>
     import ScrollToTopButton from "$lib/components/ScrollToTopButton.svelte";
-    import ContactSection from "$lib/components/ContactSection.svelte";
     import ProductsSection from "$lib/components/ProductsSection.svelte";
     import AboutSection from "$lib/components/AboutSection.svelte";
     import { slide } from "svelte/transition";
 
     var change = false;
     var submenu_expand = false;
+
+    function handleAnchorClick(event) {
+        event.preventDefault();
+        const link = event.currentTarget;
+        const anchorId = new URL(link.href).hash.replace("#", "");
+        const anchor = document.getElementById(anchorId);
+        window.scrollTo({
+            top: anchor.offsetTop,
+            behavior: "smooth",
+        });
+    }
 </script>
 
 <svelte:head>
@@ -40,7 +50,9 @@
             <p>
                 Experience the best high quality printing with our essentials.
             </p>
-            <a href="#about-us"><button>About us</button></a>
+            <a href="#about-us" on:click={handleAnchorClick}
+                ><button>About us</button></a
+            >
         </div>
     </header>
 
@@ -54,16 +66,6 @@
                     }}
                     class="menu-link"
                     data-content="Home">Home</a
-                >
-            </li>
-            <li class="menu-item">
-                <a
-                    href="#about-us"
-                    on:click={() => {
-                        change = !change;
-                    }}
-                    class="menu-link"
-                    data-content="About Us">About Us</a
                 >
             </li>
             <li class="menu-item">
@@ -97,12 +99,12 @@
             </li>
             <li class="menu-item">
                 <a
-                    href="#contact"
+                    href="#about-us"
                     on:click={() => {
                         change = !change;
                     }}
                     class="menu-link"
-                    data-content="Contact">Contact</a
+                    data-content="About us">About us</a
                 >
             </li>
         </ul>
@@ -128,10 +130,6 @@
 </div>
 
 <style>
-    :global(html) {
-        scroll-behavior: smooth;
-    }
-
     .hamburger-menu {
         width: 3rem;
         height: 3rem;
