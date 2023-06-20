@@ -21,8 +21,7 @@
 
 <svelte:head>
     <title
-        >Vision | Buy used copier, used printers, high quality ink, accessories
-        and a lot more</title
+        >Vision Company.</title
     >
 </svelte:head>
 

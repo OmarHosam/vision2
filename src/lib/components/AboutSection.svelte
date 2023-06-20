@@ -15,7 +15,7 @@
                 supplies. They specialize in importing the best printing
                 machines, inks, and papers, and always ensure that all products
                 are compatible with the highest globally recommended quality
-                standards. <a href="/about">Buy used copier.</a>
+                standards. <a href="/about">Read more.</a>
             </p>
         </div>
     </div>

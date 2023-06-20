@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-    <title>Vision | Understanding Our Purpose and Direction</title>
+    <title>Vision Company.</title>
 </svelte:head>
 
 <section class="section" id="about-us">
